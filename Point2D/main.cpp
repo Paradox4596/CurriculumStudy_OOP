@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Point2D.h"
+//#include "Point2D.h"
 
 //int main()
 //{
@@ -78,34 +78,58 @@
 //	std::cout << sizeof(Monster) << std::endl; // 8바이트 나온다 -> 멤버변수가 2개밖에 없어서
 //}
 
-class ClassA
-{
-public:
-	ClassA()
-	{
-		std::cout << "A생성" << std::endl;
-	}
-	~ClassA()
-	{
-		std::cout << "A소멸" << std::endl;
-	}
-};
+//class ClassA
+//{
+//public:
+//	ClassA()
+//	{
+//		std::cout << "A생성" << std::endl;
+//	}
+//	~ClassA()
+//	{
+//		std::cout << "A소멸" << std::endl;
+//	}
+//};
+//
+//class ClassB
+//{
+//	ClassA mA;
+//public:
+//	ClassB()
+//	{
+//		std::cout << "B생성" << std::endl;
+//	}
+//	~ClassB()
+//	{
+//		std::cout << "B소멸" << std::endl;
+//	}
+//};
+//
+//int main()
+//{
+//	ClassB myClass;
+//}
 
-class ClassB
+// 동적배열 - 래퍼 클래스, 캡슐화의 장점 + delete 일일히 신경쓸 필요도 없는 장점
+class MyArray
 {
-	ClassA mA;
+private:
+	int* mArray;
+	int mLength;
+
 public:
-	ClassB()
+	MyArray(int len) : mLength{len}, mArray{new int [len]{}}
 	{
-		std::cout << "B생성" << std::endl;
+		//mArray = new int [len] {};
 	}
-	~ClassB()
+
+	~MyArray()
 	{
-		std::cout << "B소멸" << std::endl;
+		delete[] mArray;
 	}
 };
 
 int main()
 {
-	ClassB myClass;
+	MyArray array{ 100 };
 }
