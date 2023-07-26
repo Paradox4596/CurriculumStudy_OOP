@@ -2,7 +2,7 @@
 
 class Sword
 {
-	friend class Player::AttackWith(Sword& sword);
+	friend void Player::AttackWith(Sword& sword);
 
 private:
 	int mDamage;
